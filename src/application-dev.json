@@ -1,0 +1,13 @@
+{
+  "mySqlConfig":{
+    "host"     : "localhost",
+    "user"     : "root",
+    "password" : "123456",
+    "port"     : "3306",
+    "database" : "lj_mp"
+  },
+  "oncegame_host": "",
+  "wxLoginAppid": "wx19792965396beb35",
+  "wxLoginSecret": "411f2d4bd42a95fe379252cdbf9fc623",
+  "test": false
+}

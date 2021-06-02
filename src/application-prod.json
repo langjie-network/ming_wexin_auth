@@ -1,0 +1,11 @@
+{
+  "mySqlConfig":{
+    "host"     : "www.langjie.com",
+    "user"     : "root",
+    "password" : "437612langjie",
+    "port"     : "3306",
+    "database" : "lj_mp"
+  },
+  "oncegame_host": "https://wx.langjie.com/ming",
+  "test": false
+}

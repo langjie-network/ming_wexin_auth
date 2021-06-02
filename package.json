@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "restart": "git pull &&  killport 8888  && npm start",
+    "start": "cd src && node index.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "ming_node": "^1.9.95",
+    "ming_xxl_job": "^1.0.1"
+  }
+}

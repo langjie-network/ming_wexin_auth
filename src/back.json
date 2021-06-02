@@ -1,0 +1,10 @@
+{
+  "mySqlConfig":{
+    "host"     : "localhost",
+    "user"     : "root",
+    "password" : "123456",
+    "port"     : "3306",
+    "database" : "lj_mp"
+  },
+  "oncegame_host": "http://minglie8888.vaiwan.com"
+}
