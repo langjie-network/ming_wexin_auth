@@ -31,6 +31,12 @@ app.use("/member",async (req,res)=>{
 })
 
 
+
+app.get("/member",async (req,res)=>{
+    console.log("get member")
+})
+
+
 app.get("/index",async (req,res)=>{
 
 
