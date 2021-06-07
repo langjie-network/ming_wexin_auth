@@ -112,6 +112,7 @@ service.checkOpenId2 =async function(params) {
         var cdurl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + appid + "&secret=" + appsecret + "&code=" + code + "&grant_type=authorization_code";
         console.log(cdurl)
         let result=await M.get(cdurl)
+       console.log("==access_token==>",result)
         if(result.errcode){
             return -1
         }
