@@ -27,20 +27,19 @@ app.begin(async (req,res)=>{
 
 app.use("/member",async (req,res)=>{
      await service.check(req,res)
-     console.log("WWWWWWWWW")
+    console.log("use_member", req.url, res.alreadySend)
 })
 
 
 
 app.get("/member",async (req,res)=>{
-    console.log("get member")
+    console.log("get_member", req.url, res.alreadySend)
 })
 
 
-app.get("/index",async (req,res)=>{
-
-
-
+app.get("/member/index",async (req,res)=>{
+   console.log("get_member_index", req.url, res.alreadySend)
+    res.send("success")
 })
 
 //猜数字
@@ -52,19 +51,10 @@ app.get("/updateGuessValue",async (req,res)=>{
 app.get("/updateAddr",async (req,res)=>{
 
 
-
-
-
-
-
 })
 
 
-
 app.get("/manamger",manager.managerServer)
-
-
-
 
 
 

@@ -13,7 +13,7 @@ service.initUserByOpenId=async function (openid){
 service.check=async function (req,res){
     await service.checkOpenId(req,res)
     if(res.alreadySend != true){
-        service.checkPerson(req,res)
+       await  service.checkPerson(req,res)
     }
 }
 
@@ -155,15 +155,11 @@ service.checkOpenId2 =async function(params) {
 service.checkPerson = async function(req, res) {
     const { open_id } = req.session;
     const result = await service.checkPerson2(open_id);
+
     req.session.code = result.code;
     if (result.code.includes(10000)) {
-        const originalUrl = req.originalUrl;
-        if (originalUrl.indexOf('/member/onlineService') !== -1) {
-
-        } else {
-            //跳到注册页
-            res.send("regist.html");
-        }
+       //跳到注册页
+       res.send("regist.html");
         return;
     }
     req.session.uid = result.data.memberInfo.user_id;
@@ -173,11 +169,6 @@ service.checkPerson = async function(req, res) {
         req.session.admin_id = result.data.adminInfo.user_id;
     } else {
         req.session.user_id_arr = result.data.user_id_arr;
-    }
-    if (cb) {
-        cb(result);
-    } else {
-        next();
     }
 }
 
