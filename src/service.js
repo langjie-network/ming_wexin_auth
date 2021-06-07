@@ -1,6 +1,7 @@
 var M=require("ming_node");
 var Db=require("./Db")
 var ejs=require("ejs")
+var request = require('request');
 
 let service={}
 
@@ -37,11 +38,8 @@ service.checkOpenId=async function (req,res){
             unionid:result.data.unionid,
             wxUserInfo:result.data.info
         };
-
         return result;
-    }
-
-     if(result.code==-10001){
+    }else if(result.code==-10001){
          let html= ejs.render(M.readFile("static/tip.html"),{
              tip: 'code过期，请重新进入'
          })
@@ -49,12 +47,10 @@ service.checkOpenId=async function (req,res){
          return
     }else {
          if(result.code==-10002){
-             res.alreadySend = true;
-             res.writeHead(302, {'Content-Type': 'text/html; charset=utf-8', 'Location': result.data});
-             res.end();
+             res.redirect(result.data);
          }
      }
-     console.log("WWWWAAAAAAAW",result)
+
 
 }
 
@@ -261,7 +257,84 @@ service.checkPerson2 = async open_id => {
 
 
 
+/**
+ *  获取code
+ */
+service.wxGetCode = (req,res) => {
+    let { code, state } = req.params;
+    state = state.replace(/\$/g, '&');
+    if (state.indexOf('?') === -1) {
+        state = state + '?code=' + code;
+    } else {
+        state = state + '&code=' + code;
+    }
+    res.redirect(state);
+}
 
+/**
+ *  获取微信静态token
+ */
+service.wxGetToken = (req,res) => {
+    const appid = CONFIG.appid;
+    const secret = CONFIG.appsecret;
+    const infoUrl = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=' + appid + '&secret=' + secret;
+    request.get(infoUrl,(err,response,body) => {
+        res.send(body);
+    });
+}
+
+/**
+ *  获取微信指定人的身份信息和unionid
+ */
+service.wxGetUserInfo = (req,res) => {
+    const { access_token, openid } = url.parse(req.url,true).query;
+    const infoUrl = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token=' + access_token + '&openid=' + openid + '&lang=zh_CN';
+    request.get(infoUrl,(err,response,body) => {
+        res.send(body);
+    });
+}
+
+/**
+ *  向服务号发送消息
+ */
+this.wxSendMsg = (req,res,next) => {
+    const { form_data } = req.body;
+    const webHost = CONFIG.proxy_protocol+'://'+CONFIG.proxy_host+':'+CONFIG.proxy_port;
+    request.get(webHost + '/wx/getToken',(err,response,body) => {
+        body = typeof(body)=='object'?body:JSON.parse(body);
+        let access_token;
+        try{
+            access_token = body.data.access_token;
+        }catch(e){
+            access_token = body.access_token;
+        }
+        const msgUrl = 'https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=' + access_token;
+        request.post(msgUrl,(err,response,body) => {
+            res.send(body);
+        }).form(form_data);
+    });
+}
+
+/**
+ *  向服务号发送消息
+ */
+this.wxSendMsg = (req,res,next) => {
+    const { form_data } = req.body;
+    const webHost = CONFIG.proxy_protocol+'://'+CONFIG.proxy_host+':'+CONFIG.proxy_port;
+    request.get(webHost + '/wx/getToken',(err,response,body) => {
+        body = typeof(body)=='object'?body:JSON.parse(body);
+        let access_token;
+        try{
+            access_token = body.data.access_token;
+        }catch(e){
+            access_token = body.access_token;
+        }
+        const msgUrl = 'https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=' + access_token;
+        request.post(msgUrl,(err,response,body) => {
+            res.send(body);
+        }).form(form_data);
+    });
+}
 
 
 

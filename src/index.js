@@ -32,29 +32,30 @@ app.use("/member",async (req,res)=>{
 
 
 
-app.get("/member",async (req,res)=>{
-    console.log("get_member", req.url, res.alreadySend)
-})
-
-
 app.get("/member/index",async (req,res)=>{
    console.log("get_member_index", req.url, res.alreadySend)
     res.send("success")
 })
 
-//猜数字
-app.get("/updateGuessValue",async (req,res)=>{
 
-})
-
-//改收货地址
-app.get("/updateAddr",async (req,res)=>{
-
-
+app.get("/tokenVerify",(req,res)=>{
+    res.send(req.params.nonce)
 })
 
 
-app.get("/manamger",manager.managerServer)
+app.get('/wx/getCode', function(req,res) {
+    service.wxGetCode(req,res);
+});
+app.get('/wx/getToken', function(req,res) {
+    service.wxGetToken(req,res);
+});
+app.get('/wx/getUserInfo', function(req,res) {
+    service.wxGetUserInfo(req,res);
+});
+app.post('/wx/sendMsg', function(req,res) {
+    service.wxSendMsg(req,res);
+});
+
 
 
 
@@ -66,31 +67,4 @@ app.post("/doSql",async function (req,res) {
         res.send(M.result(e,false));
     }
 })
-
-app.get("/getSuccess_user_list",async function (req,res) {
-    let r=await service.getSuccess_user_list();
-    res.send(M.result(r))
-})
-
-
-
-app.get("/getShStockInfo",async (req,res)=>{
-    let r=await service.getShStockInfo()
-    res.send(M.result(r))
-})
-
-
-app.get("/goodInfoCheck",async (req,res)=>{
-    let r=await service.goodInfoCheck(req.params.open_id)
-    res.send(M.result(r))
-})
-
-
-
-app.get("/config",async function (req,res) {
-    res.send({
-        "oncegameEnable":true
-    })
-})
-
 

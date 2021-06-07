@@ -1,11 +1,19 @@
 {
   "mySqlConfig":{
-    "host"     : "www.langjie.com",
+    "host"     : "localhost",
     "user"     : "root",
-    "password" : "437612langjie",
+    "password" : "123456",
     "port"     : "3306",
     "database" : "lj_mp"
   },
-  "oncegame_host": "https://wx.langjie.com/ming",
+  "proxy_protocol": "http",
+  "proxy_host": "localhost",
+  "proxy_port": "8090",
+  "oncegame_host": "",
+  "wxRedirectUrl": "https://wx.langjie.com/wx/getCode",
+  "appid": "wx0f012ab2b8db902d",
+  "appsecret": "e9f1f204691863715cc18e9e0439c069",
+  "wxLoginAppid": "wx19792965396beb35",
+  "wxLoginSecret": "411f2d4bd42a95fe379252cdbf9fc623",
   "test": false
 }
