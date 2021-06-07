@@ -6,9 +6,9 @@
     "port"     : "3306",
     "database" : "lj_mp"
   },
-  "proxy_protocol": "http",
-  "proxy_host": "localhost",
-  "proxy_port": "8090",
+  "proxy_protocol": "https",
+  "proxy_host": "wx.langjie.com",
+  "proxy_port": "443",
   "oncegame_host": "",
   "wxRedirectUrl": "https://wx.langjie.com/wx/getCode",
   "appid": "wx0f012ab2b8db902d",
