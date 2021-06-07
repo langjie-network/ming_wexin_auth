@@ -10,9 +10,9 @@
   "proxy_host": "minglie8090.vaiwan.com",
   "proxy_port": "",
   "oncegame_host": "",
-  "wxRedirectUrl": "https://wx.langjie.com/wx/getCode",
-  "appid": "wx0f012ab2b8db902d",
-  "appsecret": "e9f1f204691863715cc18e9e0439c069",
+  "wxRedirectUrl": "http://minglie8090.vaiwan.com/wx/getCode",
+  "appid": "wxb82ed6f75c3a22ad",
+  "appsecret": "999915ad9371781036b2bf8f917a28fd",
   "wxLoginAppid": "wx19792965396beb35",
   "wxLoginSecret": "411f2d4bd42a95fe379252cdbf9fc623",
   "test": false
