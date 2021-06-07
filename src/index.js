@@ -39,7 +39,7 @@ app.get("/member/index",async (req,res)=>{
 
 
 app.get("/tokenVerify",(req,res)=>{
-    res.send(req.params.nonce)
+    res.send(req.params.echostr)
 })
 
 

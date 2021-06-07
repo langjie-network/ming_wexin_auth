@@ -10,7 +10,7 @@
   "proxy_host": "localhost",
   "proxy_port": "8090",
   "oncegame_host": "",
-  "wxRedirectUrl": "http://minglie.vaiwan.com/wx/getCode",
+  "wxRedirectUrl": "http://minglie8090.vaiwan.com/wx/getCode",
   "appid": "wxb82ed6f75c3a22ad",
   "appsecret": "999915ad9371781036b2bf8f917a28fd",
   "wxLoginAppid": "wx19792965396beb35",
