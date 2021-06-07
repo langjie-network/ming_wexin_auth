@@ -44,6 +44,7 @@ app.get("/tokenVerify",(req,res)=>{
 
 
 app.get('/wx/getCode', function(req,res) {
+    console.log("AAAAAAAAAAAAAA")
     service.wxGetCode(req,res);
 });
 app.get('/wx/getToken', function(req,res) {

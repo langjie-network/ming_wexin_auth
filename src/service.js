@@ -300,7 +300,10 @@ service.wxGetUserInfo = (req,res) => {
  */
 this.wxSendMsg = (req,res,next) => {
     const { form_data } = req.body;
-    const webHost = CONFIG.proxy_protocol+'://'+CONFIG.proxy_host+':'+CONFIG.proxy_port;
+    let webHost = CONFIG.proxy_protocol+'://'+CONFIG.proxy_host
+        if(CONFIG.proxy_port){
+            webHost=webHost  +':'+CONFIG.proxy_port;
+        }
     request.get(webHost + '/wx/getToken',(err,response,body) => {
         body = typeof(body)=='object'?body:JSON.parse(body);
         let access_token;

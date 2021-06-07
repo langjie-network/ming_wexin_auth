@@ -7,8 +7,8 @@
     "database" : "lj_mp"
   },
   "proxy_protocol": "http",
-  "proxy_host": "localhost",
-  "proxy_port": "8090",
+  "proxy_host": "minglie8090.vaiwan.com",
+  "proxy_port": "",
   "oncegame_host": "",
   "wxRedirectUrl": "http://minglie8090.vaiwan.com/wx/getCode",
   "appid": "wxb82ed6f75c3a22ad",
